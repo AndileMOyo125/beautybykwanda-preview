@@ -1,0 +1,258 @@
+
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Beauty by Kwanda | Professional Makeup Artist</title>
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com?plugins=forms,typography"></script>
+    
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    
+    <script>
+      tailwind.config = {
+        darkMode: 'class',
+        theme: {
+          extend: {
+            colors: {
+              primary: "#1a1a1a",
+              accent: "#8b5cf6",
+              luxury: {
+                beige: "#f5f5f4",
+                dark: "#121212"
+              }
+            },
+            fontFamily: {
+              display: ["Playfair Display", "serif"],
+              sans: ["Inter", "sans-serif"],
+            },
+          },
+        },
+      };
+    </script>
+    <style>
+      .reveal { opacity: 0; transform: translateY(20px); transition: all 0.8s ease-out; }
+      .reveal.visible { opacity: 1; transform: translateY(0); }
+      .masonry { column-count: 1; column-gap: 1rem; }
+      @media (min-width: 640px) { .masonry { column-count: 2; } }
+      @media (min-width: 1024px) { .masonry { column-count: 3; } }
+      .masonry-item { break-inside: avoid; margin-bottom: 1rem; }
+      [data-page] { display: none; }
+      [data-page].active { display: block; }
+      
+      /* Smooth transitions for dark mode */
+      body { transition: background-color 0.3s ease, color 0.3s ease; }
+    </style>
+  </head>
+  <body class="bg-stone-50 text-slate-900 dark:bg-neutral-950 dark:text-stone-100 font-sans">
+    
+    <!-- Navbar -->
+    <nav class="fixed w-full z-[60] bg-stone-50/80 dark:bg-neutral-950/80 backdrop-blur-lg border-b border-stone-200 dark:border-neutral-800 transition-colors">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex justify-between items-center h-20">
+          <a href="#/" class="flex items-center gap-3 group">
+            <div class="bg-primary dark:bg-stone-200 p-2 rounded transform group-hover:rotate-12 transition-transform">
+              <span class="text-white dark:text-primary font-display font-bold text-xl tracking-tighter">BK</span>
+            </div>
+            <span class="font-display text-lg tracking-[0.2em] uppercase font-semibold hidden sm:block">Beauty By Kwanda</span>
+          </a>
+
+          <div class="hidden md:flex space-x-8 items-center" id="desktop-nav">
+            <a href="#/" class="nav-link text-[10px] uppercase tracking-[0.3em] font-bold hover:text-accent transition-colors">Home</a>
+            <a href="#/portfolio" class="nav-link text-[10px] uppercase tracking-[0.3em] font-bold hover:text-accent transition-colors">Portfolio</a>
+            <a href="#/classes" class="nav-link text-[10px] uppercase tracking-[0.3em] font-bold hover:text-accent transition-colors">Classes</a>
+            <a href="#/booking" class="nav-link text-[10px] uppercase tracking-[0.3em] font-bold hover:text-accent transition-colors">Booking</a>
+            <button id="theme-toggle" class="p-2 rounded-full hover:bg-stone-200 dark:hover:bg-neutral-800 transition-colors">
+              <i data-lucide="moon" class="dark:hidden"></i>
+              <i data-lucide="sun" class="hidden dark:block"></i>
+            </button>
+            <a href="#/booking" class="bg-primary text-white dark:bg-stone-100 dark:text-primary px-6 py-2 rounded-full text-[10px] uppercase tracking-widest font-bold hover:opacity-90 transition-opacity">Book Now</a>
+          </div>
+
+          <div class="md:hidden flex items-center gap-4">
+            <button id="theme-toggle-mobile" class="p-2 rounded-full hover:bg-stone-200 dark:hover:bg-neutral-800 transition-colors">
+              <i data-lucide="moon" class="dark:hidden"></i>
+              <i data-lucide="sun" class="hidden dark:block"></i>
+            </button>
+            <button id="mobile-menu-btn" class="p-2"><i data-lucide="menu"></i></button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Mobile Menu -->
+      <div id="mobile-menu" class="hidden md:hidden bg-stone-50 dark:bg-neutral-950 border-b border-stone-200 dark:border-neutral-800 px-4 py-6 space-y-4">
+        <a href="#/" class="mobile-nav-link block text-[10px] uppercase tracking-[0.3em] font-bold py-2">Home</a>
+        <a href="#/portfolio" class="mobile-nav-link block text-[10px] uppercase tracking-[0.3em] font-bold py-2">Portfolio</a>
+        <a href="#/classes" class="mobile-nav-link block text-[10px] uppercase tracking-[0.3em] font-bold py-2">Classes</a>
+        <a href="#/booking" class="mobile-nav-link block text-[10px] uppercase tracking-[0.3em] font-bold py-2">Booking</a>
+        <a href="#/booking" class="mobile-nav-link block bg-primary text-white text-center py-3 rounded text-[10px] uppercase tracking-widest font-bold">Book Now</a>
+      </div>
+    </nav>
+
+    <main id="content">
+      <!-- Page: Home -->
+      <div data-page="home" class="active">
+        <section class="relative h-[90vh] flex items-center justify-center overflow-hidden">
+          <div class="absolute inset-0 z-0">
+            <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuDg9nOtksubPdy3ZtY7lCNjXyEM0W6WLFngxg7d-Msu-N0jO6u_pCtIdsSSEsdzbS9SR_FHfz2A_-FdG54no_iSyv98ux2aYRQ5Xvq0Rn0CiUEf0g-ylmz6jl-B4IT4hHo0cuiJbW8vPoGqGH976Bd1xMED5VhaKr3LAGYI_GCvEwKcqkrE2rF5cOqMWpLm5m8L5yAfQOOmbUAfhgJzJfuhl5azw07jLMrb3mWPa33V6bbm7kfVmqjIJss7VWw7MFYNy3nYCF8Zpg" alt="Beauty Hero" class="w-full h-full object-cover grayscale-[20%] opacity-60 dark:opacity-40" />
+            <div class="absolute inset-0 bg-gradient-to-b from-stone-50/20 via-transparent to-stone-50 dark:to-neutral-950"></div>
+          </div>
+          <div class="relative z-10 text-center px-4 reveal max-w-5xl mx-auto">
+            <h1 class="font-display text-5xl md:text-8xl font-bold tracking-tight mb-6 leading-tight">Elegance <br /><span class="italic font-normal">Redefined</span></h1>
+            <p class="text-sm md:text-lg uppercase tracking-[0.4em] text-slate-600 dark:text-stone-400 mb-10 max-w-2xl mx-auto leading-relaxed">Professional makeup artistry for the modern woman. Specializing in Soft Glam, Bridal, and Graduation.</p>
+            <div class="flex flex-col sm:flex-row gap-4 justify-center">
+              <a href="#/booking" class="px-10 py-4 bg-primary text-white dark:bg-stone-100 dark:text-primary text-[11px] font-bold uppercase tracking-widest hover:opacity-90 transition-all rounded-sm">Book A Service</a>
+              <a href="#/booking?service=Classes" class="px-10 py-4 border border-primary dark:border-stone-100 text-[11px] font-bold uppercase tracking-widest hover:bg-primary hover:text-white dark:hover:bg-stone-100 dark:hover:text-primary transition-all rounded-sm">Makeup Classes</a>
+            </div>
+          </div>
+        </section>
+
+        <section class="py-24 px-4 bg-white dark:bg-neutral-900/40" id="services">
+          <div class="max-w-7xl mx-auto">
+            <div class="text-center mb-16 reveal">
+              <span class="text-accent text-xs font-bold uppercase tracking-[0.4em]">Our Expertise</span>
+              <h2 class="font-display text-4xl md:text-5xl mt-3">Signature Services</h2>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8" id="services-grid">
+              <!-- Rendered via JS -->
+            </div>
+          </div>
+        </section>
+
+        <section class="py-24 bg-stone-100 dark:bg-neutral-900/60 overflow-hidden" id="classes-section">
+          <div class="max-w-7xl mx-auto px-4">
+            <div class="grid lg:grid-cols-2 gap-16 items-center">
+              <div class="reveal">
+                <span class="text-accent text-xs font-bold uppercase tracking-[0.4em] mb-4 block">Education</span>
+                <h2 class="font-display text-4xl md:text-6xl mb-8 leading-tight">1 on 1 Beginner <br /><span class="italic">Makeup Classes 2026</span></h2>
+                <ul class="space-y-6 mb-12">
+                  <li class="flex gap-4"><i data-lucide="check-circle" class="text-accent flex-shrink-0"></i><div><h4 class="font-bold text-lg">4 Days Intense Workshop</h4><p class="text-slate-600 dark:text-stone-400 text-sm mt-1">4 hours per day covering everything from basics to advanced.</p></div></li>
+                  <li class="flex gap-4"><i data-lucide="check-circle" class="text-accent flex-shrink-0"></i><div><h4 class="font-bold text-lg">Comprehensive Curriculum</h4><p class="text-slate-600 dark:text-stone-400 text-sm mt-1">Learn skin prep, brow trimming, drawing, and product application.</p></div></li>
+                  <li class="flex gap-4"><i data-lucide="check-circle" class="text-accent flex-shrink-0"></i><div><h4 class="font-bold text-lg">Certification & Starter Kit</h4><p class="text-slate-600 dark:text-stone-400 text-sm mt-1">Certificate of attendance provided along with a list of recommended products.</p></div></li>
+                </ul>
+                <div class="bg-white dark:bg-neutral-800 p-8 rounded-2xl border-l-4 border-accent shadow-lg">
+                  <div class="flex justify-between items-center mb-6"><span class="font-display text-2xl">Investment</span><span class="text-3xl font-bold">R 2 500</span></div>
+                  <p class="text-xs text-slate-500 italic mb-8">*Training includes full use of professional product kit</p>
+                  <a href="#/booking?service=Classes" class="w-full block text-center py-4 bg-primary text-white text-[11px] font-bold uppercase tracking-widest rounded-lg hover:bg-neutral-800 transition-all">Reserve My Spot</a>
+                </div>
+              </div>
+              <div class="relative reveal h-[600px] flex items-center justify-center">
+                <div class="relative w-full h-full max-w-md mx-auto">
+                  <div class="absolute top-0 right-0 w-3/4 aspect-square rounded-full border-[12px] border-white dark:border-neutral-800 overflow-hidden shadow-2xl z-20"><img src="https://lh3.googleusercontent.com/aida-public/AB6AXuBmrOHhn3C-6RvKtJmotpUmPhZDp7XDw601w6SryiQyrp6pc7Z1mSB-dEEf_92sUGicHw0BfnPAhqcBInYxBrAaXFpx2xJ7y3glgO5warxDGZZFYvS3CKqjRcoFID2-RCogpRUrVTWKZfHcG7xK1JiSI-YLtDCvRU5IUiWtigMzJdnWrFKSGXQwerkRZbS16Y4HIsYFRhkTcJ37nGfNymJOR89UIsT35YNVCy5v_6Avv901M0cllQFOX9RCyHAKbmcncQ9mRuoGfw" class="w-full h-full object-cover" /></div>
+                  <div class="absolute bottom-0 left-0 w-2/3 aspect-square rounded-full border-[8px] border-white dark:border-neutral-800 overflow-hidden shadow-2xl z-10"><img src="https://lh3.googleusercontent.com/aida-public/AB6AXuDa24zyGJ1ukW5KD9I_-dCSyhdjeudHQcsamgB-gLXo1c0lxGSqba8wsg2sY1ecGefwo4HTW0gUaTLUxoviRYLgFoYf1IRiTxKxltH8q3jcvLjuFptI50fVSJ1j47lVYZGAhfz1te2IvSKS_fjhGIdteZLbHDDbkSRBHV3FdYNIK7WeKovyMx-isst3w8sskFE-UbiQI1kR9Brwn2VT7RAifoK5Dt8ggTYPKL8B6qKF2WXoxGvpjlpgcTnTG0osNqa-rQ7qNSSsPg" class="w-full h-full object-cover" /></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section class="py-24 bg-white dark:bg-neutral-950">
+          <div class="max-w-7xl mx-auto px-4">
+            <div class="flex flex-col md:flex-row justify-between items-end mb-16 gap-6 reveal">
+              <div><h2 class="font-display text-4xl mb-2">The Portfolio</h2><p class="text-xs uppercase tracking-[0.3em] text-slate-500">Curated looks for exceptional women</p></div>
+              <a href="#/portfolio" class="flex items-center gap-2 text-[10px] font-bold uppercase tracking-widest hover:text-accent transition-colors">Full Gallery <i data-lucide="arrow-right"></i></a>
+            </div>
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-4" id="home-portfolio-preview">
+              <!-- Rendered via JS -->
+            </div>
+          </div>
+        </section>
+      </div>
+
+      <!-- Page: Portfolio -->
+      <div data-page="portfolio">
+        <div class="pt-32 pb-32 px-4 max-w-7xl mx-auto">
+          <header class="text-center mb-16">
+            <h2 class="font-serif italic text-accent text-lg mb-2">Artistry in every detail</h2>
+            <h1 class="font-display text-5xl md:text-7xl mb-6 tracking-tight">Glamour Gallery</h1>
+            <p class="max-w-2xl mx-auto text-slate-500 dark:text-stone-400 text-sm leading-relaxed">Discover our signature looks, from delicate Soft Glam to bold Full Glam transformations.</p>
+          </header>
+          <div class="flex flex-wrap justify-center gap-4 mb-16" id="portfolio-filters">
+            <!-- Filter buttons JS -->
+          </div>
+          <div class="masonry" id="portfolio-grid">
+            <!-- Items via JS -->
+          </div>
+        </div>
+      </div>
+
+      <!-- Page: Booking -->
+      <div data-page="booking">
+        <div class="pt-32 pb-32 px-4 max-w-7xl mx-auto">
+          <header class="text-center max-w-3xl mx-auto mb-20 reveal">
+            <span class="text-accent text-xs font-bold uppercase tracking-[0.4em] mb-4 block">Secure Reservation</span>
+            <h1 class="font-display text-5xl md:text-7xl mb-6">Book Your Look</h1>
+            <p class="text-lg text-slate-500 dark:text-stone-400 italic font-serif">"Excellence is in the details. Let's make you shine."</p>
+          </header>
+          <div class="grid lg:grid-cols-12 gap-12 items-start">
+            <div class="lg:col-span-4 space-y-6 reveal">
+              <div class="bg-white dark:bg-neutral-900 p-8 rounded-[2.5rem] border border-stone-200 dark:border-neutral-800 shadow-xl overflow-hidden relative group">
+                <div class="relative z-10">
+                  <div class="flex items-center gap-3 mb-8"><div class="p-2 bg-accent/10 rounded-lg"><i data-lucide="credit-card" class="text-accent"></i></div><h4 class="font-bold text-xs uppercase tracking-widest">Pricing & Deposit</h4></div>
+                  <div class="space-y-6">
+                    <div class="flex justify-between items-end"><span class="text-slate-500 text-sm">Selected Service</span><span class="text-xl font-display font-bold" id="summary-service-name">Soft Glam</span></div>
+                    <div class="flex justify-between items-end"><span class="text-slate-500 text-sm">Total Artistry Fee</span><span class="text-2xl font-bold font-display text-accent" id="summary-total-price">R 500</span></div>
+                    <div class="pt-6 border-t border-stone-100 dark:border-neutral-800">
+                      <div class="bg-stone-50 dark:bg-neutral-950 p-6 rounded-2xl border-2 border-dashed border-accent/20">
+                        <div class="flex justify-between items-center mb-2"><span class="text-[10px] font-bold uppercase tracking-widest text-accent">Mandatory Deposit (50%)</span><i data-lucide="shield-check" class="text-accent"></i></div>
+                        <p class="text-3xl font-display font-bold" id="summary-deposit-amount">R 250</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="bg-primary text-white p-8 rounded-[2.5rem] shadow-xl">
+                <h3 class="font-display text-2xl mb-6">Booking Policy</h3>
+                <ul class="space-y-4 text-xs tracking-wide text-stone-300">
+                  <li class="flex gap-3"><span class="text-accent">•</span><span>Deposits are <b class="text-white">non-refundable</b> but transferable once.</span></li>
+                  <li class="flex gap-3"><span class="text-accent">•</span><span>Mobile services attract a travel fee from Malvern.</span></li>
+                </ul>
+              </div>
+            </div>
+            <div class="lg:col-span-8 reveal">
+              <form id="booking-form" class="bg-white dark:bg-neutral-900 p-8 md:p-12 rounded-[2.5rem] shadow-2xl border border-stone-100 dark:border-neutral-800 space-y-10">
+                <div class="grid md:grid-cols-2 gap-8">
+                  <div class="space-y-3"><label class="text-[10px] uppercase tracking-[0.2em] font-bold text-slate-500 ml-1">Full Name</label><input type="text" id="form-name" required placeholder="e.g. Lerato M." class="w-full bg-stone-50 dark:bg-neutral-950 border-stone-200 dark:border-neutral-800 rounded-2xl px-6 py-4 focus:ring-2 focus:ring-accent/50 focus:border-accent outline-none transition-all" /></div>
+                  <div class="space-y-3"><label class="text-[10px] uppercase tracking-[0.2em] font-bold text-slate-500 ml-1">Contact Number</label><input type="tel" id="form-phone" required placeholder="WhatsApp Preferred" class="w-full bg-stone-50 dark:bg-neutral-950 border-stone-200 dark:border-neutral-800 rounded-2xl px-6 py-4 focus:ring-2 focus:ring-accent/50 focus:border-accent outline-none transition-all" /></div>
+                </div>
+                <div class="grid md:grid-cols-2 gap-8">
+                  <div class="space-y-3"><label class="text-[10px] uppercase tracking-[0.2em] font-bold text-slate-500 ml-1">Desired Service</label><select id="form-service" class="w-full bg-stone-50 dark:bg-neutral-950 border-stone-200 dark:border-neutral-800 rounded-2xl px-6 py-4 focus:ring-2 focus:ring-accent/50 focus:border-accent outline-none appearance-none transition-all"><option value="Soft Glam">Soft Glam</option><option value="Full Glam">Full Glam</option><option value="Graduation Makeup">Graduation Makeup</option><option value="Bridal Artistry">Bridal Artistry</option><option value="Classes">Classes</option></select></div>
+                  <div class="space-y-3"><label class="text-[10px] uppercase tracking-[0.2em] font-bold text-slate-500 ml-1">Location Preference</label><div class="flex gap-3"><button type="button" data-loc="At Studio" class="loc-btn flex-1 py-4 px-4 rounded-2xl text-[10px] uppercase font-bold tracking-widest transition-all border flex items-center justify-center gap-2 bg-primary text-white border-primary dark:bg-stone-100 dark:text-primary">Studio</button><button type="button" data-loc="Mobile (Traveling)" class="loc-btn flex-1 py-4 px-4 rounded-2xl text-[10px] uppercase font-bold tracking-widest transition-all border flex items-center justify-center gap-2 bg-stone-50 dark:bg-neutral-950 text-slate-500 border-stone-200 dark:border-neutral-800">Travel</button></div></div>
+                </div>
+                <div class="space-y-3"><label class="text-[10px] uppercase tracking-[0.2em] font-bold text-slate-500 ml-1">The Inspiration</label><textarea id="form-message" rows="4" required placeholder="Describe your desired look..." class="w-full bg-stone-50 dark:bg-neutral-950 border-stone-200 dark:border-neutral-800 rounded-2xl px-6 py-4 focus:ring-2 focus:ring-accent/50 focus:border-accent outline-none transition-all resize-none"></textarea></div>
+                <button type="submit" class="w-full py-6 bg-primary dark:bg-stone-100 dark:text-primary text-white text-[11px] font-bold uppercase tracking-[0.4em] rounded-2xl flex items-center justify-center gap-3 hover:opacity-90 transition-all shadow-xl hover:shadow-2xl transform hover:-translate-y-1 active:scale-[0.98]">Request Appointment <i data-lucide="send"></i></button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-primary text-stone-400 py-24 px-4 border-t border-neutral-800">
+      <div class="max-w-7xl mx-auto">
+        <div class="grid md:grid-cols-12 gap-16 mb-20">
+          <div class="md:col-span-5">
+            <a href="#/" class="flex items-center gap-4 mb-8"><div class="bg-stone-100 p-2 rounded"><span class="text-primary font-display font-bold text-2xl tracking-tighter">BK</span></div><span class="text-white font-display text-2xl tracking-widest uppercase font-semibold">Beauty By Kwanda</span></a>
+            <p class="max-w-sm text-sm leading-relaxed mb-8">Enhancing natural beauty with professional precision. Johannesburg's premier destination for luxury makeup and artist training.</p>
+            <div class="flex gap-4"><a href="#" class="w-10 h-10 rounded-full border border-neutral-800 flex items-center justify-center hover:bg-white hover:text-primary transition-all"><i data-lucide="instagram"></i></a><a href="#" class="w-10 h-10 rounded-full border border-neutral-800 flex items-center justify-center hover:bg-white hover:text-primary transition-all"><i data-lucide="facebook"></i></a></div>
+          </div>
+          <div class="md:col-span-4"><h4 class="text-white font-display text-xl mb-8">Contact Us</h4><ul class="space-y-6"><li class="flex items-center gap-4"><i data-lucide="phone" class="text-accent"></i><span class="text-sm tracking-widest">064 650 1742</span></li><li class="flex items-center gap-4"><i data-lucide="map-pin" class="text-accent"></i><span class="text-sm">Malvern, Johannesburg</span></li></ul></div>
+          <div class="md:col-span-3"><h4 class="text-white font-display text-xl mb-8">Quick Links</h4><ul class="space-y-4 uppercase text-[10px] tracking-widest font-bold"><li><a href="#/" class="hover:text-white transition-colors">Home</a></li><li><a href="#/portfolio" class="hover:text-white transition-colors">Portfolio</a></li><li><a href="#/classes" class="hover:text-white transition-colors">Classes</a></li></ul></div>
+        </div>
+        <div class="pt-10 border-t border-neutral-800 flex flex-col md:flex-row justify-between items-center text-[10px] uppercase tracking-widest gap-4"><p>© 2026 Beauty By Kwanda. All Rights Reserved.</p></div>
+      </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="index.js"></script>
+  </body>
+</html>
+
